@@ -160,7 +160,11 @@ class Agent():
             self.env_cfg["max_units"] = 16
 
         # 加载训练好的 PPO 模型（请确保模型文件路径正确）
-        self.model = PPO.load("ppo_game_env_model")
+        import os
+        if os.path.exists("/kaggle/working/"):
+            self.model = PPO.load("/kaggle/working/ppo_game_env_model")
+        else:
+            self.model = PPO.load("ppo_game_env_model")
 
     def act(self, step: int, obs, remainingOverageTime: int = 60):
         """

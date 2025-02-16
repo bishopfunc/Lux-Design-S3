@@ -53,6 +53,7 @@ if __name__ == "__main__":
     player_id = 0
     env_cfg = None
     i = 0
+    if 
     while True:
         inputs = read_input()
         raw_input = json.loads(inputs)
