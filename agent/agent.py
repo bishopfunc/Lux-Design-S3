@@ -160,7 +160,9 @@ class Agent():
             self.env_cfg["max_units"] = 16
 
         # 加载训练好的 PPO 模型（请确保模型文件路径正确）
-        self.model = PPO.load("ppo_game_env_model")
+        from pathlib import Path
+        model_path = Path(__file__).parent / "ppo_game_env_model.zip"
+        self.model = PPO.load(model_path)
 
     def act(self, step: int, obs, remainingOverageTime: int = 60):
         """
