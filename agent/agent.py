@@ -162,7 +162,13 @@ class Agent():
         # 加载训练好的 PPO 模型（请确保模型文件路径正确）
         from pathlib import Path
         model_path = Path(__file__).parent / "ppo_game_env_model.zip"
-        self.model = PPO.load(model_path)
+        
+        print(f"Loading model from {model_path}...")
+        print(f"{model_path.exists()=}")
+        try:
+            self.model = PPO.load(model_path)
+        except Exception as e:
+            print(f"Error loading model: {e}")
 
     def act(self, step: int, obs, remainingOverageTime: int = 60):
         """
